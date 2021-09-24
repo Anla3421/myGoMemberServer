@@ -1,0 +1,58 @@
+// protoc --go_out=. --go_opt=paths=source_relative \
+// --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+// mygrpc/go.proto
+
+// protoc --go_out=. \
+// --go-grpc_out=. \
+// mygrpc/go.proto
+
+//protoc --go_out=. *.proto
+
+// protoc -I mygrpc/ --go_out=plugins=grpc:calculatorPB mygrpc/go.proto
+
+syntax = "proto3";  // 定義要使用的 protocol buffer 版本
+
+package protobuf;  // for name space
+option go_package = "mygrpc/protobuf";  // generated code 的 full Go import path
+
+message QueryLogRequest {
+  string account = 1;
+}
+
+message QueryLogIsExistRequest {
+  string account = 1;
+}
+
+message DeleteLogRequest {
+  string account = 1;
+}
+
+message DeleteLogIsExistRequest {
+  string account = 1;
+}
+
+message QueryLogResponse {
+  string account = 1;
+  repeated string logintime = 2;
+}
+
+message QueryLogIsExistResponse {
+  map <string,string> remark = 1;
+  bool dataexist = 2;
+}
+
+message DeleteLogResponse {
+  string account = 1;
+  repeated string logintime = 2;
+}
+
+message DeleteLogIsExistResponse {
+  bool dataexist = 1;
+}
+
+service MygrpcService {
+  rpc QueryLogIsExist(QueryLogIsExistRequest) returns (QueryLogIsExistResponse) {};
+  rpc QueryLog(QueryLogRequest) returns (QueryLogResponse) {};
+  rpc DeleteLogIsExist(DeleteLogIsExistRequest) returns (DeleteLogIsExistResponse) {};
+  rpc DeleteLog(DeleteLogRequest) returns (DeleteLogResponse) {};
+}
