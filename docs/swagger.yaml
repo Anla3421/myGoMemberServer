@@ -1,0 +1,187 @@
+definitions:
+  controller.ChPWDReq:
+    properties:
+      jwt:
+        type: string
+      newpassword:
+        type: string
+    required:
+    - jwt
+    - newpassword
+    type: object
+  controller.LogDelReq:
+    properties:
+      account:
+        type: string
+    required:
+    - account
+    type: object
+  controller.LoginReq:
+    properties:
+      account:
+        type: string
+      password:
+        type: string
+    required:
+    - account
+    - password
+    type: object
+  controller.LogoutReq:
+    properties:
+      jwt:
+        type: string
+    required:
+    - jwt
+    type: object
+  controller.RegistryReq:
+    properties:
+      account:
+        type: string
+      password:
+        type: string
+    required:
+    - account
+    - password
+    type: object
+info:
+  contact: {}
+paths:
+  /chpwd:
+    post:
+      consumes:
+      - application/json
+      description: Change Password
+      parameters:
+      - description: JWT及新密碼
+        in: body
+        name: Jwt/NewPassword
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ChPWDReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      summary: Change Password
+      tags:
+      - Post
+  /logdel:
+    delete:
+      consumes:
+      - application/json
+      description: Delete User Log
+      parameters:
+      - description: 欲刪除歷程之使用者
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/controller.LogDelReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      summary: Delete User Log
+      tags:
+      - Delete
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Give a ID & PWD to Login then get a JWT
+      parameters:
+      - description: 欲登入之帳號及密碼
+        in: body
+        name: account/password
+        required: true
+        schema:
+          $ref: '#/definitions/controller.LoginReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      summary: Login a account
+      tags:
+      - Post
+  /logout:
+    post:
+      consumes:
+      - application/json
+      description: Give JWT to Logout account
+      parameters:
+      - description: 欲登出之帳號的JWT
+        in: body
+        name: JWT
+        required: true
+        schema:
+          $ref: '#/definitions/controller.LogoutReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      summary: Logout a account
+      tags:
+      - Post
+  /memberlog:
+    get:
+      consumes:
+      - application/json
+      description: Query User log
+      parameters:
+      - description: 欲查詢歷程之使用者
+        in: query
+        name: account
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      summary: Query User log
+      tags:
+      - Get
+  /query/{account}:
+    get:
+      consumes:
+      - application/json
+      description: Query User Data
+      parameters:
+      - description: 欲查詢資料之使用者
+        in: path
+        name: account
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      summary: Query User
+      tags:
+      - Get
+  /registry:
+    post:
+      consumes:
+      - application/json
+      description: Give a ID & PWD to Registry
+      parameters:
+      - description: 欲註冊之帳號及密碼
+        in: body
+        name: account/password
+        required: true
+        schema:
+          $ref: '#/definitions/controller.RegistryReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      summary: Registry a account
+      tags:
+      - Post
+swagger: "2.0"

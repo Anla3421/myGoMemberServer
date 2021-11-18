@@ -30,6 +30,15 @@ func NewQueryTask() *QueryTask {
 	}
 }
 
+// @Summary Query User
+// @Description Query User Data
+// @Tags Get
+// @Accept json
+// @Produce json
+// @Param account path string true "欲查詢資料之使用者"
+// @Success 200 "success"
+// @Router /query/{account} [get]
+// Query User
 // Query:查詢使用者
 func Query(c *gin.Context) {
 	task := NewQueryTask()

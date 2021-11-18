@@ -36,6 +36,15 @@ func NewLogDelTask() *LogDelTask {
 	}
 }
 
+// @Summary Delete User Log
+// @Description Delete User Log
+// @Tags Delete
+// @Accept json
+// @Produce json
+// @Param account body LogDelReq true "欲刪除歷程之使用者"
+// @Success 200 "success"
+// @Router /logdel [delete]
+// Delete User Log
 func Logdel(c *gin.Context) {
 	task := NewLogDelTask()
 	c.Set(env.APIResKeyInGinContext, task.Res)

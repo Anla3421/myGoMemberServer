@@ -35,6 +35,15 @@ func NewQueryLogTask() *QueryLogTask {
 	}
 }
 
+// @Summary Query User log
+// @Description Query User log
+// @Tags Get
+// @Accept json
+// @Produce json
+// @Param account query string true "欲查詢歷程之使用者"
+// @Success 200 "success"
+// @Router /memberlog [get]
+// Query User log
 func Memberlog(c *gin.Context) {
 	task := NewQueryLogTask()
 	c.Set(env.APIResKeyInGinContext, task.Res)

@@ -45,7 +45,14 @@ func ResponseHanlder() gin.HandlerFunc {
 				c.JSON(s, res)
 			default: //200
 				// 成功執行完畢, 回傳成功訊息
+				if c.Request.URL.Path == "/swagger/doc.json" {
+					return
+				}
+
 				res.Code = 1
+				if res.Message == "" {
+					res.Message = "Success"
+				}
 				if res.Result == nil {
 					res.Result = result
 				}

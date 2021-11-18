@@ -46,6 +46,15 @@ func NewLoginTask() *LoginTask {
 	}
 }
 
+// @Summary Login a account
+// @Description Give a ID & PWD to Login then get a JWT
+// @Tags Post
+// @Accept json
+// @Produce json
+// @Param account/password body LoginReq true "欲登入之帳號及密碼"
+// @Success 200 "success"
+// @Router /login [post]
+// Login
 func Login(c *gin.Context) {
 	task := NewLoginTask()
 	c.Set(env.APIResKeyInGinContext, task.Res)

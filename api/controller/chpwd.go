@@ -35,6 +35,15 @@ func NewChPWDTask() *ChPWDTask {
 	}
 }
 
+// @Summary Change Password
+// @Description Change Password
+// @Tags Post
+// @Accept json
+// @Produce json
+// @Param Jwt/NewPassword body ChPWDReq true "JWT及新密碼"
+// @Success 200 "success"
+// @Router /chpwd [post]
+// Change Password
 func ChangePwd(c *gin.Context) {
 	task := NewChPWDTask()
 	c.Set(env.APIResKeyInGinContext, task.Res)

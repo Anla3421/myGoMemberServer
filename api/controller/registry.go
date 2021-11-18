@@ -37,6 +37,14 @@ func NewRegistryTask() *RegistryTask {
 	}
 }
 
+// @Summary Registry a account
+// @Description Give a ID & PWD to Registry
+// @Tags Post
+// @Accept json
+// @Produce json
+// @Param account/password body RegistryReq true "欲註冊之帳號及密碼"
+// @Success 200 "success"
+// @Router /registry [post]
 // Registry
 func Registry(c *gin.Context) {
 	task := NewRegistryTask()
