@@ -5,3 +5,8 @@ type Query struct {
 	Password string
 	JWT      *string
 }
+
+type GetInfoByJWT struct {
+	ID      int32
+	Account string
+}

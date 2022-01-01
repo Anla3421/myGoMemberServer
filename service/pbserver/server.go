@@ -8,7 +8,10 @@ import (
 	"server/model/dao/logdel"
 	"server/model/dao/memberlog"
 	"server/model/dao/registry"
-	"server/service/mygrpc/protobuf"
+	"server/service/pbserver/getInfo"
+
+	proto "github.com/Anla3421/myGoProtobuf/myGoMemberServer/go"
+	protobuf "github.com/Anla3421/myGoProtobuf/myGoMemberServer/go"
 
 	"google.golang.org/grpc"
 )
@@ -16,6 +19,10 @@ import (
 //gPRC server 連線建立＆監聽
 type Server struct {
 	protobuf.UnimplementedMygrpcServiceServer
+}
+
+func setServer(s *grpc.Server) {
+	proto.RegisterGetInfoServer(s, getInfo.NewService())
 }
 
 func GrpcServer() {
@@ -28,6 +35,8 @@ func GrpcServer() {
 
 	grpcServer := grpc.NewServer()
 	protobuf.RegisterMygrpcServiceServer(grpcServer, &Server{})
+
+	setServer(grpcServer)
 
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("gRPC server:failed to serve: %v \n", err)

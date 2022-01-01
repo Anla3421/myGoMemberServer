@@ -1,3 +1,5 @@
+-- Adminer 4.8.1 MySQL 8.0.25 dump
+
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
@@ -19,6 +21,33 @@ CREATE TABLE `drink` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 
+DROP TABLE IF EXISTS `dummyUser`;
+CREATE TABLE `dummyUser` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `account` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `password` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `jwt` varchar(256) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+INSERT INTO `dummyUser` (`id`, `account`, `password`, `jwt`, `update_at`) VALUES
+(1,	'admin',	'21232f297a57a5a743894a0e4a801fc3',	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50IjoiYWRtaW4iLCJleHAiOjE2MzkxNDU1NTQsImlzcyI6Ik1lIn0.VCp98bVMlPNYfrY9KiDIm7QRu-SfQ9WM7KmFZetNWT8',	'2021-12-24 07:19:03');
+
+DROP TABLE IF EXISTS `goods`;
+CREATE TABLE `goods` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `amount` int NOT NULL,
+  `price` int NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `ID_UNIQUE` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+INSERT INTO `goods` (`ID`, `name`, `amount`, `price`) VALUES
+(1,	'蘋果',	100,	10),
+(2,	'香蕉',	50,	50);
+
 DROP TABLE IF EXISTS `movielist`;
 CREATE TABLE `movielist` (
   `ID` int NOT NULL,
@@ -30,16 +59,23 @@ CREATE TABLE `movielist` (
 INSERT INTO `movielist` (`ID`, `idre`, `moviename`) VALUES
 (1,	'1292052',	'肖申克的救赎');
 
-DROP TABLE IF EXISTS `new_table`;
-CREATE TABLE `new_table` (
-  `ID` int NOT NULL,
-  `Name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `text` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `itemID` int NOT NULL,
+  `amount` int NOT NULL,
+  `price` int NOT NULL,
+  `buyerID` int NOT NULL,
+  `finish` enum('yes','no') COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'no',
+  `createTime` timestamp NOT NULL,
+  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
-INSERT INTO `new_table` (`ID`, `Name`, `text`) VALUES
-(53,	NULL,	NULL);
+INSERT INTO `order` (`ID`, `itemID`, `amount`, `price`, `buyerID`, `finish`, `createTime`, `update_at`) VALUES
+(7,	1,	10,	10000,	1,	'no',	'2021-12-24 02:29:13',	'2021-12-24 02:29:13'),
+(8,	1,	10,	10000,	1,	'no',	'2021-12-24 15:23:07',	'2021-12-24 07:23:06'),
+(9,	1,	10,	10000,	1,	'yes',	'2021-12-24 16:28:33',	'2021-12-24 08:28:32');
 
 DROP TABLE IF EXISTS `page3`;
 CREATE TABLE `page3` (
@@ -103,8 +139,7 @@ CREATE TABLE `logintime` (
 
 INSERT INTO `logintime` (`id`, `account`, `login_time`) VALUES
 (1,	'admin',	1620713800),
-(2,	'jared',	1620713846),
-(3,	'jared',	1620713900);
+(2,	'jared',	1620713846);
 
 DROP TABLE IF EXISTS `member`;
 CREATE TABLE `member` (
@@ -117,5 +152,71 @@ CREATE TABLE `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 INSERT INTO `member` (`id`, `account`, `password`, `jwt`, `updated_at`) VALUES
-(1,	'admin',	'21232f297a57a5a743894a0e4a801fc3',	'indontneedthis',	'2021-05-11 07:07:26'),
-(2,	'jared',	'b620e68b3bf4387bf7c43d51bd12910b',	NULL,	'2021-05-11 07:07:26');
+(1,	'admin',	'21232f297a57a5a743894a0e4a801fc3',	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50IjoiYWRtaW4iLCJleHAiOjE2MzkxNDU1NTQsImlzcyI6Ik1lIn0.VCp98bVMlPNYfrY9KiDIm7QRu-SfQ9WM7KmFZetNWT8',	'2021-05-11 07:07:26'),
+(2,	'jared',	'b620e68b3bf4387bf7c43d51bd12910b',	NULL,	'2021-05-11 07:07:26'),
+(3,	'derek',	'7815696ecbf1c96e6894b779456d330e',	NULL,	'2021-12-11 19:16:45');
+
+CREATE DATABASE `zorderdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `zorderdb`;
+
+DROP TABLE IF EXISTS `dummyUser`;
+CREATE TABLE `dummyUser` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `account` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `password` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `jwt` varchar(256) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+INSERT INTO `dummyUser` (`id`, `account`, `password`, `jwt`, `update_at`) VALUES
+(1,	'admin',	'21232f297a57a5a743894a0e4a801fc3',	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50IjoiYWRtaW4iLCJleHAiOjE2MzkxNDU1NTQsImlzcyI6Ik1lIn0.VCp98bVMlPNYfrY9KiDIm7QRu-SfQ9WM7KmFZetNWT8',	'2021-12-24 07:19:03');
+
+DROP TABLE IF EXISTS `goods`;
+CREATE TABLE `goods` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `amount` int NOT NULL,
+  `price` int NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `ID_UNIQUE` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+INSERT INTO `goods` (`ID`, `name`, `amount`, `price`, `description`) VALUES
+(1,	'蘋果',	100,	10,	'只是個蘋果'),
+(2,	'香蕉',	50,	50,	'只是個香蕉');
+
+DROP TABLE IF EXISTS `orderDetail`;
+CREATE TABLE `orderDetail` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `orderID` int unsigned NOT NULL,
+  `itemID` int NOT NULL,
+  `amount` int NOT NULL,
+  `price` int NOT NULL,
+  `buyerID` int NOT NULL,
+  `finish` enum('yes','no') COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'no',
+  `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+INSERT INTO `orderDetail` (`ID`, `orderID`, `itemID`, `amount`, `price`, `buyerID`, `finish`, `createTime`, `update_at`) VALUES
+(1,	1,	1,	10,	10000,	1,	'no',	'2021-12-24 02:29:13',	'2021-12-24 02:29:13');
+
+DROP TABLE IF EXISTS `orderGeneral`;
+CREATE TABLE `orderGeneral` (
+  `orderID` int NOT NULL AUTO_INCREMENT,
+  `totalPrice` int NOT NULL,
+  `buyerID` int NOT NULL,
+  `finish` enum('yes','no') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'no',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`orderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `orderGeneral` (`orderID`, `totalPrice`, `buyerID`, `finish`, `created_at`, `updated_at`) VALUES
+(1,	99999,	1,	'no',	'2021-12-29 08:27:34',	'2021-12-29 08:27:34'),
+(2,	99999,	2,	'no',	'2021-12-29 08:27:34',	'2021-12-29 08:27:34');
+
+-- 2021-12-30 20:03:48

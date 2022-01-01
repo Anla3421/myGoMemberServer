@@ -20,6 +20,7 @@ func IsExist(account string) bool {
 
 func RegMember(account string, password string) {
 	results, err := dao.MysqlConn.Query("INSERT INTO member (account,password) VALUES (?,?)", account, password)
+	// results, err := dao.MysqlConn.Query("INSERT INTO member (account,password) VALUES (" + account + "," + password + ")")
 	if err != nil {
 		panic(err)
 	}

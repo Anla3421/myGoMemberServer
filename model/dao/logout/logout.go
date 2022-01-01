@@ -8,6 +8,8 @@ import (
 
 //判斷是否存在JWT，如果存在就刪除
 func JwtIsExistAndDeleteIfExist(jwt string) bool {
+	// sql injection test
+	// results := dao.MysqlConn.QueryRow("SELECT COUNT(jwt) FROM member Where jwt=" + jwt)
 	results := dao.MysqlConn.QueryRow("SELECT COUNT(jwt) FROM member Where jwt=?", jwt)
 	var count int
 	err := results.Scan(&count)

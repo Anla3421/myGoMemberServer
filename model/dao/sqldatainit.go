@@ -3,8 +3,6 @@ package dao
 import (
 	"fmt"
 	"server/model/dto"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 func QueryInfoAll() map[string]dto.Response {

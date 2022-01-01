@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"server/service/mygrpc/protobuf"
+	protobuf "github.com/Anla3421/myGoProtobuf/myGoMemberServer/go"
 
 	"google.golang.org/grpc"
 )
