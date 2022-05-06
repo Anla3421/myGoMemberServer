@@ -4,8 +4,8 @@
 # PATH="/Users/a2021050320/myGoMemberServer/docker"
 # export PATH 
 read -p "請輸入start／stop來啟動／終止docker-compose: " var
-#[ "${var}" == "start" ] && cd /Users/a2021050320/myGoMemberServer/docker && docker-compose up -d && cd ~ && exit 0
-#[ "${var}" == "stop" ] && cd /Users/a2021050320/myGoMemberServer/docker && docker-compose down && cd ~ && exit 0
+[ "${var}" == "start" ] && cd /Users/jaredliu/go/src/myGoMemberServer/docker && docker-compose up -d && cd ~ && exit 0
+[ "${var}" == "stop" ] && cd /Users/jaredliu/go/src/myGoMemberServer/docker && docker-compose down && cd ~ && exit 0
 
-[ "${var}" == "start" ] && cd /d/myGoMemberServer/docker && docker-compose up -d && cd ~ && exit 0
-[ "${var}" == "stop" ] && cd /d/myGoMemberServer/docker && docker-compose down && cd ~ && exit 0
+# [ "${var}" == "start" ] && cd /d/myGoMemberServer/docker && docker-compose up -d && cd ~ && exit 0
+# [ "${var}" == "stop" ] && cd /d/myGoMemberServer/docker && docker-compose down && cd ~ && exit 0
