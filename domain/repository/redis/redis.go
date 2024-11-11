@@ -3,8 +3,8 @@ package redis
 import (
 	"encoding/json"
 	"fmt"
-	"server/model/dao"
-	"server/model/dto"
+	"server/domain/repository/model/dao"
+	"server/domain/repository/model/dto"
 
 	"github.com/go-redis/redis/v8"
 )

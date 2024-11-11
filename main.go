@@ -2,7 +2,7 @@ package main
 
 import (
 	"server/api"
-	"server/service/pbserver"
+	"server/infrastructure/service/pbserver"
 )
 
 func main() {

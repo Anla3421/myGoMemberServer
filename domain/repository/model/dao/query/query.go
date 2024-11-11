@@ -2,8 +2,8 @@ package query
 
 import (
 	"fmt"
-	"server/model/dao"
-	"server/model/dto"
+	"server/domain/repository/model/dao"
+	"server/domain/repository/model/dto"
 	"strconv"
 )
 

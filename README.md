@@ -3,6 +3,16 @@
 一個基於 Golang 實現的簡單會員服務系統 API，使用 Gin 框架開發。
 API 文件：http://localhost:9000/swagger/index.html
 
+## 啟動服務
+1. 建立 docker 根目錄下...
+```bash
+sh ./infrastructure/docker/go.sh
+```
+2. 啟動服務
+```bash
+go run main.go
+```
+
 ## 功能特性
 
 - 使用者註冊與認證
@@ -13,7 +23,7 @@ API 文件：http://localhost:9000/swagger/index.html
 - gRPC 服務整合
 - Redis 快取支援
 
-## 技術架構
+## 技術/架構
 
 - Golang 1.23.1
 - Gin Web Framework
@@ -107,5 +117,3 @@ API 文件：http://localhost:9000/swagger/index.html
 - 端點：`/swagger/index.html`
 - 功能：提供互動式 API 文件介面
 - 包含所有 API 的詳細說明和測試功能
-
-## 專案結構

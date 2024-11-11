@@ -2,7 +2,8 @@ package logdel
 
 import (
 	"fmt"
-	"server/model/dao"
+	"server/domain/repository/model/dao"
+
 	"strconv"
 )
 

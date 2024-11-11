@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"server/model/dao/logdel"
-	"server/model/dao/memberlog"
-	"server/model/dao/registry"
-	"server/service/pbserver/getInfo"
+	"server/domain/repository/model/dao/logdel"
+	"server/domain/repository/model/dao/memberlog"
+	"server/domain/repository/model/dao/registry"
+	"server/infrastructure/service/pbserver/getInfo"
 
 	proto "github.com/Anla3421/myGoProtobuf/myGoMemberServer/go"
 	protobuf "github.com/Anla3421/myGoProtobuf/myGoMemberServer/go"
@@ -16,7 +16,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-//gPRC server 連線建立＆監聽
+// gPRC server 連線建立＆監聽
 type Server struct {
 	protobuf.UnimplementedMygrpcServiceServer
 }
@@ -43,7 +43,7 @@ func GrpcServer() {
 	}
 }
 
-//gPRC server function
+// gPRC server function
 func (*Server) QueryLogIsExist(ctx context.Context, req *protobuf.QueryLogIsExistRequest) (*protobuf.QueryLogIsExistResponse, error) {
 	fmt.Printf("gRPC server:func QueryLogIsExist is invoked with %v \n", req)
 

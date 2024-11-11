@@ -2,7 +2,7 @@ package dao
 
 import (
 	"fmt"
-	"server/model/dto"
+	"server/domain/repository/model/dto"
 )
 
 func QueryInfoAll() map[string]dto.Response {

@@ -3,10 +3,10 @@ package controller
 import (
 	"fmt"
 	"server/api/protocol"
+	"server/domain/repository/model/dao/query"
+	"server/domain/repository/model/dto"
+	"server/domain/repository/redis"
 	"server/env"
-	"server/model/dao/query"
-	"server/model/dto"
-	"server/model/redis"
 
 	"github.com/gin-gonic/gin"
 )

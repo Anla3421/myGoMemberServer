@@ -3,10 +3,10 @@ package login
 import (
 	"crypto/md5"
 	"fmt"
-	"server/model/dao"
+	"server/domain/repository/model/dao"
 )
 
-//判斷密碼是否正確
+// 判斷密碼是否正確
 func IsRight(account string, password string) bool {
 	results, err := dao.MysqlConn.Query("SELECT password FROM member WHERE account=?", account)
 	//sql injection test

@@ -6,7 +6,7 @@ import (
 	"log"
 	"server/api/protocol"
 	"server/env"
-	"server/service/pbclient"
+	"server/infrastructure/service/pbclient"
 
 	protobuf "github.com/Anla3421/myGoProtobuf/myGoMemberServer/go"
 
