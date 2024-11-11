@@ -6,7 +6,7 @@ API 文件：http://localhost:9000/swagger/index.html
 ## 啟動服務
 1. 建立 docker 根目錄下...
 ```bash
-sh ./infrastructure/docker/go.sh
+bash ./infrastructure/docker/go.sh
 ```
 2. 啟動服務
 ```bash
