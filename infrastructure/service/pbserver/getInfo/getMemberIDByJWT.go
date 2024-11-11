@@ -3,7 +3,7 @@ package getInfo
 import (
 	"context"
 	"fmt"
-	"server/model/dao/query"
+	"server/domain/repository/model/dao/query"
 
 	proto "github.com/Anla3421/myGoProtobuf/myGoMemberServer/go"
 )

@@ -2,11 +2,11 @@ package logout
 
 import (
 	"fmt"
-	"server/model/dao"
+	"server/domain/repository/model/dao"
 	"strconv"
 )
 
-//判斷是否存在JWT，如果存在就刪除
+// 判斷是否存在JWT，如果存在就刪除
 func JwtIsExistAndDeleteIfExist(jwt string) bool {
 	// sql injection test
 	// results := dao.MysqlConn.QueryRow("SELECT COUNT(jwt) FROM member Where jwt=" + jwt)

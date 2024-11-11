@@ -4,8 +4,8 @@ import (
 	"crypto/md5"
 	"fmt"
 	"server/api/protocol"
+	"server/domain/repository/model/dao/registry"
 	"server/env"
-	"server/model/dao/registry"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"

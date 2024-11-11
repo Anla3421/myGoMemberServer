@@ -3,9 +3,9 @@ package controller
 import (
 	"fmt"
 	"server/api/protocol"
+	"server/domain/repository/model/dao/login"
+	"server/domain/repository/model/dao/registry"
 	"server/env"
-	"server/model/dao/login"
-	"server/model/dao/registry"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"

@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"log"
 	"server/api/protocol"
+	"server/domain/repository/redis"
+	"server/infrastructure/service/pbclient"
+
 	"server/env"
-	"server/model/redis"
-	"server/service/pbclient"
 
 	protobuf "github.com/Anla3421/myGoProtobuf/myGoMemberServer/go"
 

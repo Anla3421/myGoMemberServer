@@ -3,8 +3,8 @@ package controller
 import (
 	"fmt"
 	"server/api/protocol"
+	"server/domain/repository/model/dao/logout"
 	"server/env"
-	"server/model/dao/logout"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
